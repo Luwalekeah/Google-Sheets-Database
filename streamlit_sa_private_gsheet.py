@@ -20,23 +20,24 @@ gsheets_token_uri = os.environ.get("token_uri")
 gsheets_auth_provider_x509_cert_url = os.environ.get("auth_provider_x509_cert_url")
 gsheets_client_x509_cert_url = os.environ.get("client_x509_cert_url")
 
-# Initialize GSheetsConnection
-conn = st.connection(
-    "gsheets",
-    type=GSheetsConnection,
-    worksheet=gsheets_worksheet,
-    spreadsheet=gsheets_spreadsheet,
-    type=gsheets_type,
-    project_id=gsheets_project_id,
-    private_key_id=gsheets_private_key_id,
-    private_key=gsheets_private_key,
-    client_email=gsheets_client_email,
-    client_id=gsheets_client_id,
-    auth_uri=gsheets_auth_uri,
-    token_uri=gsheets_token_uri,
-    auth_provider_x509_cert_url=gsheets_auth_provider_x509_cert_url,
-    client_x509_cert_url=gsheets_client_x509_cert_url
-)
+# Initialize GSheetsConnection using a dictionary for parameters
+conn_parameters = {
+    "type": GSheetsConnection,
+    "worksheet": gsheets_worksheet,
+    "spreadsheet": gsheets_spreadsheet,
+    "type": gsheets_type,
+    "project_id": gsheets_project_id,
+    "private_key_id": gsheets_private_key_id,
+    "private_key": gsheets_private_key,
+    "client_email": gsheets_client_email,
+    "client_id": gsheets_client_id,
+    "auth_uri": gsheets_auth_uri,
+    "token_uri": gsheets_token_uri,
+    "auth_provider_x509_cert_url": gsheets_auth_provider_x509_cert_url,
+    "client_x509_cert_url": gsheets_client_x509_cert_url
+}
+
+conn = st.connection(**conn_parameters)
 
 # Include your CSS file
 st.markdown('<style>' + open('style/main.css').read() + '</style>', unsafe_allow_html=True)
