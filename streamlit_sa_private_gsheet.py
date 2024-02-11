@@ -1,8 +1,11 @@
+import os
 import streamlit as st
 from streamlit_gsheets import GSheetsConnection
 
+# Load environment variables
+gsheets_worksheet = os.environ.get("GSHEETS_WORKSHEET")
 
-# Include my css file
+# Include your css file
 st.markdown('<style>' + open('style/main.css').read() + '</style>', unsafe_allow_html=True)
 
 conn = st.connection("gsheets", type=GSheetsConnection)
@@ -21,20 +24,21 @@ st.markdown("""
     </div>
 """, unsafe_allow_html=True)
 
-data = conn.read(worksheet="food_by_county")
+# Read data from the specified worksheet
+data = conn.read(worksheet=gsheets_worksheet)
 st.dataframe(data)
 
-# st.subheader("Looking at Top 10 GeoType of Colorado by Median_Income Desc only")
+st.subheader("Looking at Top 10 GeoType of Colorado by Median_Income Desc only")
 
-# # Existing code for executing a predefined query
+# Existing code for executing a predefined query
 # sql = '''
 #     SELECT
-#            "ind_id","ind_definition","reportyear","race_eth_code"
-#             ,"race_eth_name","geotype","geotypevalue","geoname"
-#             ,"county_name","county_fips","region_name","region_code"
-#             ,"cost_yr","median_income","affordability_ratio"
-#             ,"LL95_affordability_ratio","UL95_affordability_ratio"
-#             ,"se_food_afford","rse_food_afford"
+#         "ind_id","ind_definition","reportyear","race_eth_code"
+#         ,"race_eth_name","geotype","geotypevalue","geoname"
+#         ,"county_name","county_fips","region_name","region_code"
+#         ,"cost_yr","median_income","affordability_ratio"
+#         ,"LL95_affordability_ratio","UL95_affordability_ratio"
+#         ,"se_food_afford","rse_food_afford"
 #     FROM
 #         "Food By County"
 #     WHERE
