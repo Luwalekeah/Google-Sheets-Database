@@ -1,6 +1,11 @@
 import os
 import streamlit as st
 from streamlit_gsheets import GSheetsConnection
+from dotenv import load_dotenv
+
+# load environment variables into the code
+load_dotenv()
+
 
 # Load environment variables
 gsheets_worksheet = os.environ.get("GSHEETS_WORKSHEET")
