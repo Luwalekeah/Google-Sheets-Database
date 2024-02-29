@@ -3,14 +3,15 @@ import streamlit as st
 from streamlit_gsheets import GSheetsConnection
 from dotenv import load_dotenv
 
-""" To run this code, set the python interpreter to 3.12 in the lib not library"""
+# """ To run this code, set the python interpreter to 3.12 in the lib not library"""
 
 # load environment variables into the code
-load_dotenv()
+env_path = Path('.') / '.env'
+load_dotenv(dotenv_path=env_path)
 
 
 # Load environment variables
-gsheets_worksheet = os.environ.get("GSHEETS_WORKSHEET")
+gsheets_worksheet = os.environ.get("my_env_variables")
 
 # Include your css file
 st.markdown('<style>' + open('style/main.css').read() + '</style>', unsafe_allow_html=True)
