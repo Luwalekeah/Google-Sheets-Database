@@ -12,7 +12,7 @@ load_dotenv(dotenv_path=env_path)
 
 
 # Load environment variables
-gsheets_worksheet = os.environ.get("my_env_variables")
+gsheets_worksheet = os.environ.get("connections.gsheets")
 
 # Include your css file
 st.markdown('<style>' + open('style/main.css').read() + '</style>', unsafe_allow_html=True)
