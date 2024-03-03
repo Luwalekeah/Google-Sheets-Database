@@ -76,3 +76,21 @@ if st.button("Run User Query"):
             st.error(f"Error executing user input query: {e}")
     else:
         st.warning("Please enter a valid SQL query.")
+        
+#----------------------------------------------------------------
+# ---------------------------------------------------------------
+
+# Add empty space above and below the copyright notice
+st.empty()
+st.empty()
+
+# Centered copyright notice and link to GitHub
+st.markdown("""
+    <div style="display: flex; justify-content: center; text-align: center;">
+        <p>Copyright © 2024 Luwalekeah. 
+        <a href="https://github.com/Luwalekeah" target="_blank">GitHub</a></p>
+    </div>
+""", unsafe_allow_html=True)
+
+# Add empty space below the copyright notice
+st.empty()
